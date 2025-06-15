@@ -1,133 +1,199 @@
+/* -----------------------
+   Paleta de colores
+-------------------------*/
 :root {
-  --azul-claro: #007bff;
-  --azul-medio: #0051cc;
-  --rojo-claro: #ff0000;
-  --rojo-oscuro: #990000;
-  --azul-oscuro: #001f3f;
-  --fondo-claro: #f4f8ff;
+  --azul-claro:   #4f9dff;
+  --azul-medio:   #0477ff;
+  --azul-oscuro:  #002b5b;
+
+  --rojo-claro:   #ff5757;
+  --rojo-oscuro:  #c70039;
+
+  --gris-claro:   #f7f9fc;
+  --gris-borde:   #dfe6f1;
+  --sombra:       rgba(0, 0, 0, 0.08);
 }
+
+/* -----------------------
+   Reseteo + base
+-------------------------*/
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: var(--fondo-claro);
-  color: var(--azul-oscuro);
+  font-family: 'Poppins', Arial, sans-serif;
+  background: radial-gradient(circle at top left, var(--azul-claro) 0%, var(--azul-oscuro) 100%);
+  min-height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
   padding: 30px;
+  color: var(--azul-oscuro);
 }
 
+/* -----------------------
+   Tarjeta principal
+-------------------------*/
 .container {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  max-width: 500px;
+  background: var(--gris-claro);
+  padding: 32px 28px;
+  border-radius: 20px;
+  max-width: 480px;
   width: 100%;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 28px var(--sombra);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
   text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px;
   color: var(--azul-oscuro);
-  margin-bottom: 20px;
 }
 
+/* -----------------------
+   Etiquetas y campos
+-------------------------*/
 .static-text {
-  font-weight: 600;
-  margin: 10px 0 5px;
-  color: var(--azul-oscuro);
+  font-weight: 500;
+  margin: 12px 0 6px;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 2px solid var(--azul-medio);
-  margin-bottom: 15px;
-  font-weight: bold;
-  font-size: 14px;
-  background-color: white;
-  color: var(--azul-oscuro);
-}
-
-input::placeholder {
-  color: #888;
-  font-weight: normal;
-}
-
+input,
 select {
   width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 2px solid var(--azul-medio);
-  margin-bottom: 15px;
-  font-weight: bold;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--gris-borde);
   font-size: 14px;
-  color: white;
-  background: linear-gradient(to right, var(--azul-claro), var(--azul-medio));
+  margin-bottom: 16px;
+  background: #fff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input::placeholder { color: #9ca3af; }
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--azul-medio);
+  box-shadow: 0 0 0 3px rgba(4, 119, 255, 0.25);
+}
+
+/* Select con ícono */
+select {
+  appearance: none;
   background-image:
-    linear-gradient(to right, var(--azul-claro), var(--azul-medio)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='white' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='%23002b5b'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23002b5b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
-  background-size: auto, 12px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  background-size: 12px 8px;
 }
 
-select:invalid {
-  color: white;
-}
-
-select option {
-  color: black;
-  background: white;
-  font-weight: normal;
-}
-
-button {
-  background: linear-gradient(to right, var(--rojo-claro), var(--rojo-oscuro));
-  color: white;
-  font-weight: bold;
-  padding: 12px;
-  width: 100%;
+/* -----------------------
+   Botones
+-------------------------*/
+.btn-primary,
+.btn-secondary {
+  font-weight: 600;
+  padding: 12px 18px;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
-  margin-top: 10px;
-  font-size: 16px;
-  transition: background 0.3s ease;
+  font-size: 15px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-button:hover {
-  background: linear-gradient(to right, var(--rojo-oscuro), var(--rojo-claro));
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(90deg, var(--rojo-claro), var(--rojo-oscuro));
+  color: #fff;
+  margin-top: 4px;
+}
+
+.btn-secondary {
+  background: linear-gradient(90deg, var(--azul-claro), var(--azul-medio));
+  color: #fff;
+  flex: 1;
+  margin: 0 4px;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px var(--sombra);
+}
+
+/* -----------------------
+   Resultado
+-------------------------*/
+.resultado-label {
+  text-align: center;
+  margin-top: 24px;
 }
 
 #resultado {
-  font-weight: bold;
-  margin-top: 10px;
-  color: var(--rojo-oscuro);
+  font-weight: 700;
+  font-size: 1.3rem;
   text-align: center;
-  font-size: 1.2em;
+  color: var(--rojo-oscuro);
+  min-height: 1.4em; /* reserva espacio antes del cálculo */
 }
 
+/* -----------------------
+   Botones secundarios en fila
+-------------------------*/
 .extra-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: 26px;
+}
+
+
+
+
+
+.help-section,
+.example-section {
   margin-top: 20px;
-}
-
-.extra-buttons button {
-  background: linear-gradient(to right, var(--azul-claro), var(--azul-medio));
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-weight: bold;
-  color: white;
-  border: none;
-  cursor: pointer;
+  background-color: #f9f9ff;
+  border-left: 4px solid var(--azul-medio);
+  padding: 20px;
+  border-radius: 12px;
   font-size: 14px;
+  color: var(--azul-oscuro);
 }
 
-.extra-buttons button:hover {
-  background: linear-gradient(to right, var(--azul-medio), var(--azul-claro));
+.example-section {
+  background-color: #fff8ee;
+  border-left: 4px solid var(--rojo-claro);
+  color: #663300;
+}
+
+.help-section h2,
+.example-section h2 {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.help-section h3,
+.example-section h3 {
+  font-size: 15px;
+  margin: 14px 0 6px;
+}
+
+.help-section p,
+.example-section ul {
+  margin-bottom: 10px;
+}
+
+.example-section ul {
+  padding-left: 20px;
 }

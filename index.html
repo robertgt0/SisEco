@@ -2,15 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interés Compuesto</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
     <h1>Interés Compuesto</h1>
 
-    <div class="static-text">Interés Compuesto.</div>
+    <label class="static-text" for="tipoCalculo">Tipo de cálculo</label>
     <select id="tipoCalculo" onchange="actualizarCampos()" required>
       <option value="" disabled selected>Selecciona una opción</option>
       <option value="futuro">Calcular Capital Futuro</option>
@@ -19,7 +24,7 @@
       <option value="tiempo">Calcular Tiempo de Capitalización</option>
     </select>
 
-    <div class="static-text">Tiempo</div>
+    <label class="static-text" for="tiempoUnidad">Unidad de tiempo</label>
     <select id="tiempoUnidad" onchange="actualizarEtiquetas()">
       <option value="diario">Diario</option>
       <option value="semanal">Semanal</option>
@@ -31,28 +36,88 @@
       <option value="anual">Anual</option>
     </select>
 
-    <div id="campoCapitalLabel" class="static-text">Capital Futuro (F)</div>
-    <input type="number" id="capital" placeholder="Capital Futuro (F)" />
+    <!-- Campos dinámicos -->
+    <div id="camposFormulario" style="display:none;">
+      <label id="labelCapital" class="static-text" for="capital">Capital Inicial (P)</label>
+      <input type="number" id="capital" placeholder="Capital Inicial (P)" />
 
-    <div id="labelInteres" class="static-text">Tasa de Interés (i) % Mensual</div>
-    <input type="number" id="interes" placeholder="Tasa de Interés (i) % Mensual" />
+      <label id="labelMonto" class="static-text" for="monto">Capital Futuro (F)</label>
+      <input type="number" id="monto" placeholder="Capital Futuro (F)" />
 
-    <div id="labelTiempo" class="static-text">Tiempo (n) en Mes(es)</div>
-    <input type="number" id="periodos" placeholder="Tiempo (n) en Mes(es)" />
+      <label id="labelInteres" class="static-text" for="interes">Tasa de Interés (i) % mensual</label>
+      <input type="number" id="interes" placeholder="Tasa de Interés (i) % mensual" />
 
-    <div id="campoMontoLabel" class="static-text">Monto Final (M)</div>
-    <input type="number" id="monto" placeholder="Monto Final (M)" />
+      <label id="labelTiempo" class="static-text" for="periodos">Tiempo (n) en meses</label>
+      <input type="number" id="periodos" placeholder="Tiempo (n) en meses" />
+    </div>
 
-    <button onclick="calcular()">Calcular</button>
+    <button class="btn-primary" onclick="calcular()">Calcular</button>
 
-    <div class="static-text" style="margin-top: 20px;">Resultado:</div>
+    <div class="static-text resultado-label">Resultado</div>
     <div id="resultado"></div>
 
     <div class="extra-buttons">
-      <button onclick="mostrarEjemplos()">Ejemplos</button>
-      <button onclick="mostrarAyuda()">Help</button>
-    </div>
-  </div>
+  <button class="btn-secondary" onclick="mostrarEjemplos()">Ejemplos</button>
+</div>
+
+<div id="ejemplosContenido" class="example-section" style="display: none;">
+  <h2>Ejemplos prácticos</h2>
+
+  <h3>🟢 Caso 1 – Calcular monto futuro (F)</h3>
+  <ul>
+    <li><strong>Ejemplo 1:</strong> Una persona deposita $12 500 al 4 % anual. ¿Cuánto tendrá en 6 años?</li>
+    <li><strong>Ejemplo 2:</strong> Un fondo universitario recibe $18 000 al 7 % anual. ¿Monto al cabo de 12 años?</li>
+    <li><strong>Ejemplo 3:</strong> Una empresa invierte $35 000 al 5,5 % anual. ¿Capital tras 9 años?</li>
+  </ul>
+
+  <h3>🔵 Caso 2 – Calcular capital presente (P)</h3>
+  <ul>
+    <li><strong>Ejemplo 1:</strong> Se requieren $40 000 en 10 años con 6 % anual. ¿Depósito hoy?</li>
+    <li><strong>Ejemplo 2:</strong> ONG busca $120 000 en 8 años al 5 % anual. ¿Aporte inicial?</li>
+    <li><strong>Ejemplo 3:</strong> Para cubrir $75 000 en 15 años al 4,2 % anual, ¿capital hoy?</li>
+  </ul>
+
+  <h3>🟣 Caso 3 – Calcular tasa de interés (i)</h3>
+  <ul>
+    <li><strong>Ejemplo 1:</strong> $9 000 crecen a $14 000 en 7 años. ¿Tasa anual?</li>
+    <li><strong>Ejemplo 2:</strong> $25 000 se convierten en $45 500 en 11 años. ¿Tasa?</li>
+    <li><strong>Ejemplo 3:</strong> $60 000 generan $102 000 en 9 años. ¿Tasa anual?</li>
+  </ul>
+
+  <h3>🟠 Caso 4 – Calcular tiempo de capitalización (n)</h3>
+  <ul>
+    <li><strong>Ejemplo 1:</strong> ¿Años para que $5 000 lleguen a $12 000 al 8 % anual?</li>
+    <li><strong>Ejemplo 2:</strong> $30 000 a 6 % anual llegan a $50 000. ¿En cuántos años?</li>
+    <li><strong>Ejemplo 3:</strong> $22 500 crecen a $40 000 al 5 % anual. ¿Tiempo requerido?</li>
+  </ul>
+</div>
+
+<div class="extra-buttons">
+  <button class="btn-secondary" onclick="mostrarAyuda()">Help</button>
+</div>
+
+<div id="ayudaContenido" class="help-section" style="display: none;">
+  <h2>¿Cómo usar la aplicación?</h2>
+  <p>Bienvenido a la aplicación de cálculo de interés compuesto con pago único. Aquí encontrarás instrucciones sobre cómo utilizarla.</p>
+
+  <h3>1. Inicio</h3>
+  <p>Selecciona el tipo de cálculo que deseas realizar. Puede ser capital futuro, capital presente, tasa de interés o tiempo.</p>
+
+  <h3>2. Calculadora</h3>
+  <p>Ingresa los valores necesarios según el tipo de cálculo elegido: capital inicial, capital futuro, tasa de interés o número de periodos.</p>
+
+  <h3>3. Resultado</h3>
+  <p>Haz clic en "Calcular" para ver el resultado detallado con el desarrollo matemático paso a paso.</p>
+
+  <h3>4. Ejemplos</h3>
+  <p>Haz clic en el botón "Ejemplos" para ver casos de uso comunes y entender mejor cada fórmula.</p>
+
+  <h3>5. Ayuda</h3>
+  <p>Presiona el botón "Help" nuevamente para ocultar esta sección. Puedes volver a consultarla en cualquier momento.</p>
+</div>
+
+
+
 
   <script src="script.js"></script>
 </body>
