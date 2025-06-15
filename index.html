@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interés Compuesto</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Interés Compuesto</h1>
+
+    <div class="static-text">Interés Compuesto.</div>
+    <select id="tipoCalculo" onchange="actualizarCampos()" required>
+      <option value="" disabled selected>Selecciona una opción</option>
+      <option value="futuro">Calcular Capital Futuro</option>
+      <option value="presente">Calcular Capital Presente</option>
+      <option value="tasa">Calcular Tasa de Interés</option>
+      <option value="tiempo">Calcular Tiempo de Capitalización</option>
+    </select>
+
+    <div class="static-text">Tiempo</div>
+    <select id="tiempoUnidad" onchange="actualizarEtiquetas()">
+      <option value="diario">Diario</option>
+      <option value="semanal">Semanal</option>
+      <option value="quincenal">Quincena</option>
+      <option value="mensual" selected>Mensual</option>
+      <option value="bimestral">Bimestral</option>
+      <option value="trimestral">Trimestral</option>
+      <option value="semestral">Semestral</option>
+      <option value="anual">Anual</option>
+    </select>
+
+    <div id="campoCapitalLabel" class="static-text">Capital Futuro (F)</div>
+    <input type="number" id="capital" placeholder="Capital Futuro (F)" />
+
+    <div id="labelInteres" class="static-text">Tasa de Interés (i) % Mensual</div>
+    <input type="number" id="interes" placeholder="Tasa de Interés (i) % Mensual" />
+
+    <div id="labelTiempo" class="static-text">Tiempo (n) en Mes(es)</div>
+    <input type="number" id="periodos" placeholder="Tiempo (n) en Mes(es)" />
+
+    <div id="campoMontoLabel" class="static-text">Monto Final (M)</div>
+    <input type="number" id="monto" placeholder="Monto Final (M)" />
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div class="static-text" style="margin-top: 20px;">Resultado:</div>
+    <div id="resultado"></div>
+
+    <div class="extra-buttons">
+      <button onclick="mostrarEjemplos()">Ejemplos</button>
+      <button onclick="mostrarAyuda()">Help</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

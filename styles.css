@@ -1,0 +1,133 @@
+:root {
+  --azul-claro: #007bff;
+  --azul-medio: #0051cc;
+  --rojo-claro: #ff0000;
+  --rojo-oscuro: #990000;
+  --azul-oscuro: #001f3f;
+  --fondo-claro: #f4f8ff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--fondo-claro);
+  color: var(--azul-oscuro);
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: var(--azul-oscuro);
+  margin-bottom: 20px;
+}
+
+.static-text {
+  font-weight: 600;
+  margin: 10px 0 5px;
+  color: var(--azul-oscuro);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--azul-medio);
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: white;
+  color: var(--azul-oscuro);
+}
+
+input::placeholder {
+  color: #888;
+  font-weight: normal;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--azul-medio);
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  background: linear-gradient(to right, var(--azul-claro), var(--azul-medio));
+  background-image:
+    linear-gradient(to right, var(--azul-claro), var(--azul-medio)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='white' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: auto, 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select:invalid {
+  color: white;
+}
+
+select option {
+  color: black;
+  background: white;
+  font-weight: normal;
+}
+
+button {
+  background: linear-gradient(to right, var(--rojo-claro), var(--rojo-oscuro));
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to right, var(--rojo-oscuro), var(--rojo-claro));
+}
+
+#resultado {
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--rojo-oscuro);
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.extra-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.extra-buttons button {
+  background: linear-gradient(to right, var(--azul-claro), var(--azul-medio));
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.extra-buttons button:hover {
+  background: linear-gradient(to right, var(--azul-medio), var(--azul-claro));
+}
